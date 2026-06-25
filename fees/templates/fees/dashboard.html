@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <style>
+        body{
+            font-family: Ariel,
+sans-serif;
+            background: #f4f6f9;
+            padding: 30px;
+        }
+
+        .card{
+            background: rgb(255 255 255);
+            padding:50px;
+            box-shadow:0 0 15px;
+    rgba(0,0,0,0.1) ;
+        }
+        h1{
+            color: #ee1171;
+        }
+        .info{
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .pay-btn{
+            margin-top:20px;
+            padding:15px 30px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Welcome {{ student.name }}</h1>
+
+        {% if student.passport %}
+        <img src="{{ student.passport.url }}" width="120">
+        {% else %}
+        <img src="/media/default.jpg" width="120" alt="No photo">
+        {% endif %}
+
+        <div class="info">
+            <p><strong>Admission No:</strong></p> {{ student.admission_number }}
+
+            <p><strong>Class:</strong>
+            {{ student.student_class }}
+            </p>
+            <p><strong>School Fees:</strong>
+            N{{ student.school_fees }}
+            </p>
+            <p><Strong>Status:</Strong></p>
+
+        {% if student.paid %}
+         Paid👍🏻
+            {% else %}
+            Not Paid😒
+                <p><strong>Outstanding Balance:</strong> N{{ student.school_fees  }}</p>
+            {% endif %}
+            <p>
+
+
+
+                </div>
+        <form action="/pay/" method="POST">
+            {% csrf_token %}
+        <button class="pay-btn">Pay School Fees</button>
+        </form>
+
+        <br>
+        <a href="/logout/">
+                    <button type="button">Logout</button>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>

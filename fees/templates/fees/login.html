@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hizburraheem Academy Portal</title>
+    <style>
+        body{
+            font-family: Ariel,
+    sans-serif;
+            background: #f4f6f9;
+            display: flow-root;
+            justify-content: center ;
+            align-items: center;
+            height: 50vh;
+        }
+        .card{
+            background:white;
+            padding:50px;
+            width:600px;
+            border-radius:20px;
+            box-shadow:0 0 15px;
+    rgba(0,0,0,0.1) ;
+
+        }
+        h2{
+            text-align:center;
+            font-size:45px;
+            color: #ee1171
+        }
+        input{
+            width:96%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border:2px solid #ccc;
+            border-radius:16px;
+            border-right:5px;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background: #ee1171;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+
+        }
+        button:hover{
+            background: #ee1171;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="centered">
+        <h2>Hizburraheem Portal</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Admission Number</label>
+            <input type="text"
+    name="admission_number">
+
+            <button type="submit">Login</button>
+            {% if error %}
+ <p style="color:red;">{{ error }} </p>
+{% endif %}
+
+
+        </form>
+    </div>
+    </body>
+    </html>
