@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Student
 from django.urls import path
 from .import views
-from .views import login_view, pay_now, logout_view
+from .views import login_view, pay_now, logout_view, dashboard
 
 
 urlpatterns = [
